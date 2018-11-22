@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>邮件模板</title>
+</head>
+<body>
+    你好，感谢您的注册，点击下面链接完成
+    <a href="#" th:href="@{http://localhost:8080/testJson/{id}(id=${id})}">激活帐号</a>
+</body>
+</html>
