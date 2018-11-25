@@ -5,16 +5,16 @@ import cn.food.boot.core.ret.RetCode;
 import cn.food.boot.core.ret.RetResponse;
 import cn.food.boot.core.ret.RetResult;
 import cn.food.boot.po.User;
+import cn.food.boot.po.UserExample;
 import cn.food.boot.service.UserService;
+import com.alibaba.fastjson.JSONObject;
 import com.sun.org.apache.regexp.internal.RE;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -38,8 +38,8 @@ public class UserController extends BaseController {
     }
 
     @ApiOperation("添加用户")
-    @RequestMapping("add")
-    public RetResult<String> add(@Valid User user, BindingResult result) {
+    @PostMapping("add")
+    public RetResult<String> add(@Valid @RequestBody User user, BindingResult result) {
         if(result.hasErrors()) {
             return RetResponse.makeErrRsp(RetCode.PARAM_ERROR, result.getFieldError().getDefaultMessage());
         }
@@ -59,6 +59,21 @@ public class UserController extends BaseController {
     public RetResult<Map> queryUsers(Integer curPage, Integer pageSize) {
         Map map = userService.getUsers(1, 20);
         return RetResponse.makeRsp(map);
+    }
+
+    @RequestMapping("update")
+    public RetResult update(User user, String oldName) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andUsernameLike("%" + oldName + "%");
+        boolean rs = userService.update(user, userExample);
+        return RetResponse.makeRsp(rs);
+    }
+
+    @PostMapping("updateMany")
+    public RetResult updateMany(@RequestBody JSONObject jsonParam) {
+
+        boolean rs = userService.updateMany(jsonParam.getString("newName"), jsonParam.getString("oldName"));
+        return RetResponse.makeRsp(rs);
     }
 
 }

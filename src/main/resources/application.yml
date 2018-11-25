@@ -34,12 +34,16 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
   type-aliases-package: cn.food.boot.po  # 注意：对应实体类的路径
-
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
 
 logging:
   config: classpath:log4j2.xml
   level:
-    cn.food.boot.mapper: debug
+    cn.food.boot.mapper: debug  # 打印sql语句
 
 server:
   port: 8080
@@ -72,10 +76,6 @@ weixin4j:
     certPath:
     #证书密钥,默认为商户ID，例如：10000000001
     certSecret:
-pagehelper:
-  helper-dialect: mysql
-  reasonable: true
-  support-methods-arguments: true
-  params: count=countSql
+
 
 

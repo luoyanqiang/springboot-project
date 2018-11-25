@@ -1,17 +1,14 @@
 package cn.food.boot;
 
-import cn.food.boot.http.HttpClientUtil;
-import cn.food.boot.http.exception.MethodNotSupportException;
-import cn.food.boot.http.request.Request;
-import cn.food.boot.http.request.RequestMethod;
-import cn.food.boot.http.request.UrlEncodedFormRequest;
-import cn.food.boot.http.response.Response;
+import cn.food.boot.utils.http.HttpClientUtil;
+import cn.food.boot.utils.http.exception.MethodNotSupportException;
+import cn.food.boot.utils.http.request.RequestMethod;
+import cn.food.boot.utils.http.request.UrlEncodedFormRequest;
+import cn.food.boot.utils.http.response.Response;
 import org.junit.Test;
-import org.omg.CORBA.ARG_IN;
 
 import java.io.*;
 import java.util.Arrays;
-import java.util.List;
 
 public class HttpClientUtilTest {
 

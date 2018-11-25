@@ -3,6 +3,7 @@ package cn.food.boot.service.impl;
 import cn.food.boot.mapper.UserCustomMapper;
 import cn.food.boot.mapper.UserMapper;
 import cn.food.boot.po.User;
+import cn.food.boot.po.UserExample;
 import cn.food.boot.po.UserQueryVo;
 import cn.food.boot.service.UserService;
 import cn.food.boot.utils.PageBean;
@@ -72,4 +73,17 @@ public class UserServiceImpl extends BaseServiceImpl implements UserService {
         }
         System.out.println("starting========= 2");
     }
+
+    @Override
+    public boolean update(User user, UserExample userExample) {
+        int rs = userMapper.updateByExample(user, userExample);
+        return rs > 0;
+    }
+
+    public boolean updateMany(String newName, String oldName) {
+        int rs = userCustomMapper.updateByExample(newName, oldName);
+        return rs > 0;
+    }
+
+
 }

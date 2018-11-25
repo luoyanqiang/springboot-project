@@ -1,5 +1,8 @@
 package cn.food.boot;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import io.swagger.models.auth.In;
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.commons.lang.math.IntRange;
 import org.apache.commons.lang3.ArrayUtils;
@@ -14,10 +17,7 @@ import org.junit.Test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
+import java.util.*;
 
 public class DemoTest {
 
@@ -68,6 +68,22 @@ public class DemoTest {
 
     @Test
     public void testTime() {
+        Integer[] arr = {1, 3, 8, 7, 5};
+        List<Integer> list = Arrays.asList(arr);
+        list.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 - o2;
+            }
+        });
+        for(Object i : list) {
+            System.out.println(i.toString());
+        }
+    }
+
+    @Test
+    public void testJson() {
+
     }
 
     @Test
