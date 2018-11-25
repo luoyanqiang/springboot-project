@@ -24,7 +24,7 @@ public class CustomInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         //参数加密校验
-        if(debug) {
+        if(!debug) {
 
             response.setCharacterEncoding("UTF-8");
             response.setContentType("application/json; charset=utf-8");

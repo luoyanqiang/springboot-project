@@ -30,7 +30,6 @@ public class BootApplicationTests {
     public void contextLoads() {
     }
 
-    @Test
     public void testPost() throws IOException {
         String url = "http://localhost:8080/testPost";
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -55,7 +54,6 @@ public class BootApplicationTests {
         httpClient.close();
     }
 
-    @Test
     public void testPost1() throws IOException {
         String url = "http://localhost:8080/testPost";
         CloseableHttpClient httpClient = HttpClients.createDefault();

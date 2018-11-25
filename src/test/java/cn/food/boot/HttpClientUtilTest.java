@@ -12,7 +12,6 @@ import java.util.Arrays;
 
 public class HttpClientUtilTest {
 
-    @Test
     public void doResponse() throws MethodNotSupportException {
         UrlEncodedFormRequest request = new UrlEncodedFormRequest("http://localhost:8080/testPost", RequestMethod.POST);
 
@@ -27,7 +26,6 @@ public class HttpClientUtilTest {
 
     }
 
-    @Test
     public void testArray() throws IOException {
         FileReader fileReader = new FileReader("test.txt");
         char[] chars = new char[1024];
@@ -47,7 +45,6 @@ public class HttpClientUtilTest {
         fileReader.close();
     }
 
-    @Test
     public void testBufferedReader() throws IOException {
         Reader reader = new FileReader("test.txt");
         BufferedReader bufferedReader = new BufferedReader(reader);
@@ -67,14 +64,12 @@ public class HttpClientUtilTest {
         reader.close();
     }
 
-    @Test
     public void testSortArray() {
         int[] arr = {10, 5, 6, 8};
         this.sortArray(arr);
         System.out.println(Arrays.toString(arr));
     }
 
-    @Test
     public void testInt() {
         StringBuilder a = new StringBuilder("hello");
         this.addInt(a);
@@ -101,7 +96,6 @@ public class HttpClientUtilTest {
         return arr;
     }
 
-    @Test
     public void testQuick() {
         int[] arr = {10, 7, 8, 6, 5};
         quickSort(arr, 0, arr.length - 1);
@@ -150,7 +144,6 @@ public class HttpClientUtilTest {
        }
    }
 
-   @Test
    public void testSelSort() {
         int[] arr = {10, 6, 7, 3};
         this.selSort(arr);

@@ -55,7 +55,6 @@ public class EmailTest {
         return true;
     }
 
-    @Test
     public void testTemplate() throws Exception {
         String subject = "this is 个主题";
         mailUtil.sendTemplateMail("2264267413@qq.com", subject);
