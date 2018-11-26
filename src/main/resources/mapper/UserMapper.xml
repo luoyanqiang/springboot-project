@@ -99,7 +99,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="cn.food.boot.po.User" >
+  <insert id="insert" parameterType="cn.food.boot.po.User"  >
     insert into user (id, username, sex, 
       birthday, address)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, 

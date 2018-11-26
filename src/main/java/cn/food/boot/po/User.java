@@ -1,5 +1,7 @@
 package cn.food.boot.po;
 
+import cn.food.boot.annotation.Mobile;
+
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
@@ -14,6 +16,7 @@ public class User {
     private Date birthday;
 
     @NotNull(message = "{user.address.isNull}")
+    @Mobile
     private String address;
 
     public Integer getId() {
