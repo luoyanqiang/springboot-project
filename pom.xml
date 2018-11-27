@@ -26,6 +26,17 @@
         <log4j2.root.path>logs/${project.name}</log4j2.root.path>
         <log4j2.error.path>logs/${project.name}-error</log4j2.error.path>
         <log4j2.package.path>logs/${project.name}-kk</log4j2.package.path>
+
+        <!-- MyBatis Generator -->
+        <mybatis.generator.version>1.3.7</mybatis.generator.version>
+        <targetJavaProject>${basedir}/src/main/java</targetJavaProject>
+        <targetMapperPackage>com.wdcloud.fayu.mapper</targetMapperPackage>
+        <targetEntityPackage>com.wdcloud.fayu.entity</targetEntityPackage>
+        <!-- tk.mybatis -->
+        <tk.mybatis.version>4.0.4</tk.mybatis.version>
+        <persistence.version>1.0</persistence.version>
+        <mapper.plugin>tk.mybatis.mapper.generator.MapperPlugin</mapper.plugin>
+        <mapper.Mapper>tk.mybatis.mapper.common.Mapper</mapper.Mapper>
     </properties>
 
     <dependencies>
@@ -177,6 +188,19 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>1.2.8</version>
         </dependency>
+
+        <!--通用Mapper -->
+        <dependency>
+            <groupId>tk.mybatis</groupId>
+            <artifactId>mapper</artifactId>
+            <version>${tk.mybatis.version}</version>
+        </dependency>
+        <!-- eitity注解 -->
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>${persistence.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -217,17 +241,40 @@
                     <useDefaultDelimiters>true</useDefaultDelimiters>
                 </configuration>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.mybatis.generator</groupId>-->
+                <!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+                <!--<version>1.3.7</version>-->
+                <!--<configuration>-->
+                    <!--<configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>-->
+                    <!--<overwrite>true</overwrite>-->
+                    <!--<verbose>true</verbose>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
-                <version>1.3.7</version>
+                <version>${mybatis.generator.version}</version>
                 <configuration>
                     <configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
-                    <overwrite>true</overwrite>
                     <verbose>true</verbose>
+                    <overwrite>true</overwrite>
                 </configuration>
-            </plugin>
 
+                <dependencies>
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>1.3.7</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>tk.mybatis</groupId>
+                        <artifactId>mapper</artifactId>
+                        <version>${tk.mybatis.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
         </plugins>
     </build>
 

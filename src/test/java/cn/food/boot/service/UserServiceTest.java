@@ -1,5 +1,6 @@
 package cn.food.boot.service;
 
+import cn.food.boot.mapper.OrdersMapper;
 import cn.food.boot.po.User;
 import com.github.pagehelper.PageHelper;
 import org.junit.Assert;
@@ -12,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.validation.Validator;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @RunWith(SpringRunner.class)
@@ -20,6 +22,23 @@ public class UserServiceTest {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private OrdersMapper ordersMapper;
+
+    @Test
+    public void testMapper() {
+        List list = ordersMapper.selectByExample(null);
+        for(Object o : list) {
+            System.out.println(o.toString());
+        }
+    }
+
+    @Test
+    public void testMapper2() {
+        Map map = userService.getUsers(1, 10);
+        System.out.println(map);
+    }
 
     @Test
     public void getUsersAndOrders() {

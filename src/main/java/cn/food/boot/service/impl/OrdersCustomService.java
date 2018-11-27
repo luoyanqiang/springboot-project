@@ -1,6 +1,7 @@
 package cn.food.boot.service.impl;
 
 import cn.food.boot.mapper.OrdersCustomMapper;
+import cn.food.boot.mapper.OrdersMapper;
 import cn.food.boot.mapper.UserCustomMapper;
 import cn.food.boot.po.OrdersCustom;
 import cn.food.boot.po.UserCustom;
@@ -14,6 +15,9 @@ public class OrdersCustomService implements cn.food.boot.service.OrdersCustom {
 
     @Autowired
     private OrdersCustomMapper ordersCustomMapper;
+
+    @Autowired
+    private OrdersMapper ordersMapper;
 
     @Override
     public List<cn.food.boot.po.OrdersCustom> queryOrdersAndUser() {
